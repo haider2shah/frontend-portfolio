@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer'
 import PillNav from '../Nav/PillNav'
 import EmailPipelineFlow from './EmailPipelineFlow'
 import LunaArchitectureDiagram from './LunaArchitectureDiagram'
+import { handleSectionClick, handleSkipToMain } from '../../utils/navigation'
 import styles from './LunaCaseStudy.module.css'
 
 const TOC_ITEMS = [
@@ -208,7 +209,7 @@ export default function LunaCaseStudy() {
 
   return (
     <>
-      <a className="skip" href="#main">Skip to content</a>
+      <button className="skip" type="button" onClick={handleSkipToMain}>Skip to content</button>
       <Cursor />
       <PillNav homePrefix="/" />
 
@@ -241,7 +242,8 @@ export default function LunaCaseStudy() {
                 <a
                   key={item.id}
                   className={activeSection === item.id ? styles.active : ''}
-                  href={`#${item.id}`}
+                  href="/case-studies/luna"
+                  onClick={handleSectionClick(item.id)}
                 >
                   {item.label}
                 </a>

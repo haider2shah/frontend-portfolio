@@ -45,7 +45,7 @@ export const projects: Project[] = [
     description:
       'A learn-by-building exercise in parsing, dependency resolution and async I/O. Ships as a single 4MB binary with a friendlier UX than the tool it imitates.',
     stack: ['Rust', 'Tokio', 'SQLite'],
-    links: [{ label: 'Repo', url: '#', icon: 'github' }],
+    links: [],
     readLabel: 'Details',
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     description:
       "Pipes, redirects, job control, tab completion. Built as the capstone for my OS course — the best way I've found to actually understand how fork/exec/dup2 fit together.",
     stack: ['C', 'POSIX', 'Make'],
-    links: [{ label: 'Repo', url: '#', icon: 'github' }],
+    links: [],
     readLabel: 'Write-up',
   },
   {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     description:
       'A small classifier trained on sensor + calendar data from my own quantified-self logs. Not Nobel-worthy, but honest work on cleaning messy real-world data.',
     stack: ['Python', 'scikit-learn', 'pandas'],
-    links: [{ label: 'Notebook', url: '#', icon: 'github' }],
+    links: [],
     readLabel: 'Details',
   },
   {
@@ -84,10 +84,7 @@ export const projects: Project[] = [
     description:
       'A 36-hour hackathon build that won "Best Technical" at CodeSF \'25. Supports 50+ concurrent editors with CRDT-based conflict resolution and a tiny Go backend.',
     stack: ['Go', 'WebSockets', 'React', 'Yjs'],
-    links: [
-      { label: 'Repo', url: '#', icon: 'github' },
-      { label: 'Demo', url: '#', icon: 'external' },
-    ],
+    links: [],
     readLabel: 'Read more',
   },
 ];

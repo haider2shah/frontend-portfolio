@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { MoonIcon, SunIcon } from '../../icons/Icons'
+import { goHomeThenScroll, scrollToSection } from '../../utils/navigation'
 import styles from './PillNav.module.css'
 
 const MENU_ITEMS = [
-  { label: 'Home', href: '#top', preview: '/nav-preview-home.png', previewLabel: 'Hero', external: false },
-  { label: 'Projects', href: '#projects', preview: '/nav-preview-projects.png', previewLabel: 'Selected work', external: false },
-  { label: 'Skills', href: '#skills', preview: '/nav-preview-skills.png', previewLabel: 'Toolbox', external: false },
-  { label: 'About', href: '#about', preview: '/nav-preview-about.png', previewLabel: 'Profile', external: false },
-  { label: 'Contact', href: '#contact', preview: '/nav-preview-contact.png', previewLabel: 'Contact', external: false },
+  { label: 'Home', href: '/', preview: '/nav-preview-home.png', previewLabel: 'Hero', external: false },
+  { label: 'Projects', href: '/', sectionId: 'projects', preview: '/nav-preview-projects.png', previewLabel: 'Selected work', external: false },
+  { label: 'Skills', href: '/', sectionId: 'skills', preview: '/nav-preview-skills.png', previewLabel: 'Toolbox', external: false },
+  { label: 'About', href: '/', sectionId: 'about', preview: '/nav-preview-about.png', previewLabel: 'Profile', external: false },
+  { label: 'Contact', href: '/', sectionId: 'contact', preview: '/nav-preview-contact.png', previewLabel: 'Contact', external: false },
 ]
 
 const OTHER_ITEMS = [
@@ -37,6 +38,18 @@ export default function PillNav({ homePrefix = '' }: PillNavProps) {
   const [scrollPercent, setScrollPercent] = useState(0)
   const [activePreview, setActivePreview] = useState(MENU_ITEMS[0])
   const isDark = theme === 'dark'
+
+  const handleMenuClick = (item: (typeof MENU_ITEMS)[number]) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false)
+    if (!item.sectionId) return
+
+    event.preventDefault()
+    if (window.location.pathname.replace(/\/$/, '') === '') {
+      scrollToSection(item.sectionId)
+    } else {
+      goHomeThenScroll(item.sectionId)
+    }
+  }
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -133,8 +146,8 @@ export default function PillNav({ homePrefix = '' }: PillNavProps) {
               {MENU_ITEMS.map((item) => (
                 <a
                   key={item.href}
-                  href={`${homePrefix}${item.href}`}
-                  onClick={() => setOpen(false)}
+                  href={item.href === '/' ? '/' : `${homePrefix}${item.href}`}
+                  onClick={handleMenuClick(item)}
                   onFocus={() => setActivePreview(item)}
                   onMouseEnter={() => {
                     if (previewResetTimer.current) clearTimeout(previewResetTimer.current)

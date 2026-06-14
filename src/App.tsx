@@ -8,18 +8,27 @@ import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 import LunaCaseStudy from './components/LunaCaseStudy/LunaCaseStudy'
+import { consumePendingScroll, handleSkipToMain, scrollToSection } from './utils/navigation'
 
 function HomePage() {
   useEffect(() => {
     const hash = window.location.hash
-    if (!hash || hash === '#top') return
-    const el = document.querySelector(hash)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (hash === '#top') {
+      window.history.replaceState(null, '', window.location.pathname)
+      window.scrollTo({ top: 0 })
+      return
+    }
+    if (hash) {
+      window.history.replaceState(null, '', window.location.pathname)
+      scrollToSection(hash.slice(1))
+      return
+    }
+    consumePendingScroll()
   }, [])
 
   return (
     <>
-      <a className="skip" href="#main">Skip to content</a>
+      <button className="skip" type="button" onClick={handleSkipToMain}>Skip to content</button>
       <Cursor />
       <PillNav />
       <main id="main">
@@ -35,7 +44,9 @@ function HomePage() {
 }
 
 export default function App() {
-  return window.location.pathname === '/case-studies/luna'
+  const path = window.location.pathname.replace(/\/$/, '')
+
+  return path === '/case-studies/luna'
     ? <LunaCaseStudy />
     : <HomePage />
 }

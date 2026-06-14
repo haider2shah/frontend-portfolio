@@ -62,16 +62,16 @@ export default function Contact() {
                 <a href={`mailto:${EMAIL}`} className="btn btn-primary">
                   Email me <span className="arrow" aria-hidden="true">→</span>
                 </a>
-                <a href="#" className="btn btn-secondary">
+                <button type="button" className="btn btn-secondary">
                   Download résumé
                   <DownloadIcon size={14} />
-                </a>
+                </button>
               </div>
             </div>
 
             <div className={styles.contactList} role="list">
               <a
-                href="#"
+                href={`mailto:${EMAIL}`}
                 className={styles.contactRow}
                 onClick={copyEmail}
                 onMouseEnter={moveHint('click to copy')}

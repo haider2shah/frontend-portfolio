@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import styles from './Hero.module.css'
 import { ArrowRightIcon } from '../../icons/Icons'
+import { handleSectionClick } from '../../utils/navigation'
 
 const BINARY_COLUMNS = Array.from({ length: 42 }, (_, i) => i)
 const BINARY_STREAM = '101001011010010110100101101001011010010110100101101001011010010110100101101001011010'
@@ -173,7 +174,7 @@ export default function Hero() {
                 I am a Front-End engineer and founder focused on building AI-native products.
               </p>
               <div className={styles.heroCtas}>
-                <a href="#projects" className={styles.btnOrange}>
+                <a href="/" className={styles.btnOrange} onClick={handleSectionClick('projects')}>
                   <span className={styles.circle} aria-hidden="true">
                     <ArrowRightIcon size={20} />
                   </span>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { handleSectionClick } from '../../utils/navigation'
 import styles from './Nav.module.css'
 
 const NAV_SECTIONS = ['projects', 'skills', 'about'] as const
@@ -51,7 +52,7 @@ export default function Nav({ activeSection }: NavProps) {
       role="banner"
     >
       <div className={styles.navInner}>
-        <a href="#top" className={styles.brand} aria-label="Haider Shah — home">
+        <a href="/" className={styles.brand} aria-label="Haider Shah — home">
           Haider Shah
         </a>
         <nav aria-label="Primary">
@@ -59,8 +60,9 @@ export default function Nav({ activeSection }: NavProps) {
             {NAV_SECTIONS.map((id) => (
               <li key={id}>
                 <a
-                  href={`#${id}`}
+                  href="/"
                   className={activeSection === id ? styles.active : undefined}
+                  onClick={handleSectionClick(id)}
                 >
                   {id.charAt(0).toUpperCase() + id.slice(1)}
                 </a>
@@ -68,7 +70,7 @@ export default function Nav({ activeSection }: NavProps) {
             ))}
           </ul>
         </nav>
-        <a href="#contact" className={styles.navCta}>
+        <a href="/" className={styles.navCta} onClick={handleSectionClick('contact')}>
           Contact me
         </a>
       </div>

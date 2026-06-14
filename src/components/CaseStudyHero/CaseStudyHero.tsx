@@ -2,6 +2,7 @@ import { useEffect, useRef, type PointerEvent, type ReactNode } from 'react'
 import * as THREE from 'three'
 // @ts-ignore
 import NET from 'vanta/dist/vanta.net.min.js'
+import { goHomeThenScroll } from '../../utils/navigation'
 import styles from './CaseStudyHero.module.css'
 
 export interface CaseStudyTitleLine {
@@ -45,7 +46,7 @@ function MetaIcon({ name }: { name: string }) {
 
 
 export default function CaseStudyHero({
-  backLink = '/#projects',
+  backLink = '/',
   titleLines,
   eyebrow,
   pitch,
@@ -114,7 +115,16 @@ export default function CaseStudyHero({
       <div className={styles.heroBg} ref={vantaRef} aria-hidden="true" />
 
       <div className="wrap">
-        <a className={styles.backLink} href={backLink}>← Back to projects</a>
+        <a
+          className={styles.backLink}
+          href={backLink}
+          onClick={(event) => {
+            event.preventDefault()
+            goHomeThenScroll('projects')
+          }}
+        >
+          ← Back to projects
+        </a>
 
         <div className={styles.heroStage}>
           <div className={styles.heroImage}>

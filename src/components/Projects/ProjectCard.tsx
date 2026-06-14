@@ -97,9 +97,12 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const Wrapper = project.url ? 'a' : 'article'
+  const wrapperProps = project.url ? { href: project.url } : {}
+
   return (
-    <a
-      href={project.url ?? '#'}
+    <Wrapper
+      {...wrapperProps}
       className={`${styles.proj} ${project.featured ? styles.featured : ''}`}
       data-card
     >
@@ -131,12 +134,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <div className={styles.footLeft}>
             {project.links.length > 0 ? (
               <div className={styles.links}>
-                {project.links.map((link) => (
-                  <a key={link.label} href={link.url} aria-label={link.label}>
-                    {link.icon === 'github' ? <GitHubIcon /> : <ExternalLinkIcon />}
-                    {link.label}
-                  </a>
-                ))}
+                {project.links
+                  .filter((link) => link.url !== '#')
+                  .map((link) => (
+                    <a key={link.label} href={link.url} aria-label={link.label}>
+                      {link.icon === 'github' ? <GitHubIcon /> : <ExternalLinkIcon />}
+                      {link.label}
+                    </a>
+                  ))}
               </div>
             ) : (
               <div className={styles.stack}>
@@ -151,6 +156,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </span>
         </div>
       </div>
-    </a>
+    </Wrapper>
   )
 }
