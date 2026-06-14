@@ -1,0 +1,23 @@
+.footer {
+  padding: 24px 0 32px;
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer a:hover {
+  color: #fff;
+}

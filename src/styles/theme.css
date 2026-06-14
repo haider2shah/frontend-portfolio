@@ -1,0 +1,49 @@
+:root {
+  --nav-bar-bg: #05050b;
+  --nav-bar-text: #fff;
+  --nav-button-border: rgba(255, 255, 255, 0.16);
+  --nav-button-hover: rgba(255, 255, 255, 0.1);
+  --nav-progress-bg: rgba(255, 255, 255, 0.16);
+  --nav-panel-bg: rgba(255, 122, 42, 0.70);
+  --nav-panel-text: #06060b;
+  --nav-panel-muted: rgba(6, 6, 11, 0.58);
+  --nav-panel-line: rgba(6, 6, 11, 0.18);
+}
+
+[data-theme="dark"] {
+  --bg: #0f1014;
+  --surface: #17181f;
+  --surface-2: #20222b;
+  --ink: #f3f4f7;
+  --ink-2: #d7dae2;
+  --ink-3: #a5abb8;
+  --ink-4: #737a89;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-2: rgba(255, 255, 255, 0.18);
+  --accent: #7da2ff;
+  --accent-soft: rgba(125, 162, 255, 0.14);
+  --good: #72d99a;
+  --nav-bar-bg: #05050b;
+  --nav-bar-text: #fff;
+  --nav-button-border: rgba(255, 255, 255, 0.16);
+  --nav-button-hover: rgba(255, 255, 255, 0.1);
+  --nav-progress-bg: rgba(255, 255, 255, 0.16);
+  --nav-panel-bg: rgba(24, 25, 31, 0.98);
+  --nav-panel-text: #f6f3ec;
+  --nav-panel-muted: rgba(246, 243, 236, 0.58);
+  --nav-panel-line: rgba(246, 243, 236, 0.16);
+}
+
+body {
+  transition:
+    background 0.24s var(--ease),
+    color 0.24s var(--ease);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: #fff;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--surface-2);
+}

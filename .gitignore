@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+.env.local
+.chrome-nav-capture-9224/
+github-profile-readme/
+*.log
