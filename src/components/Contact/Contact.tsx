@@ -62,10 +62,14 @@ export default function Contact() {
                 <a href={`mailto:${EMAIL}`} className="btn btn-primary">
                   Email me <span className="arrow" aria-hidden="true">→</span>
                 </a>
-                <button type="button" className="btn btn-secondary">
+                <a
+                  href="/haider-shah-resume.pdf"
+                  download="Haider Shah Resume.pdf"
+                  className="btn btn-secondary"
+                >
                   Download résumé
                   <DownloadIcon size={14} />
-                </button>
+                </a>
               </div>
             </div>
 
